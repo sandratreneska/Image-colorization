@@ -1,4 +1,14 @@
 IMG_WIDTH, IMG_HEIGHT = 256, 256
 CHANNELS = 3
-BATCH_SIZE = 32
-EPOCHS = 500
+BATCH_SIZE = 4
+EPOCHS = 19
+PATCH_SHAPE = 16
+TRAIN_DIR = './Dataset-Places2/train'
+VAL_DIR = './Dataset-Places2/PinDown__Old-BlackWhite-Macedonia-photos'  #'./Dataset-Places2/val'
+TEST_DIR = './Dataset-Places2/test/'
+GENERATOR_DIR = './Saved-models/Saved-gen/'
+DISCRIMINATOR_DIR = './Saved-models/Saved-disc/'
+WEIGHTS_DIR = './Saved-models/Saved-weights/'
+PLOTS_DIR = './Plots/'
+GENERATOR_PRE_DIR = './Saved-models/Saved-gen-pre/'
+DISCRIMINATOR_PRE_DIR = './Saved-models/Saved-disc-pre/'

@@ -1,5 +1,5 @@
 #   --- U-net Generator ---
-# https://machinelearningmastery.com/how-to-implement-pix2pix-gan-models-from-scratch-with-keras/
+# Based on https://machinelearningmastery.com/how-to-implement-pix2pix-gan-models-from-scratch-with-keras/
 
 from keras.initializers import RandomNormal
 from keras.models import Model
@@ -12,6 +12,7 @@ from keras.layers import Concatenate
 from keras.layers import Dropout
 from keras.layers import BatchNormalization
 from keras.layers import LeakyReLU
+from config import IMG_WIDTH, IMG_HEIGHT
 #from keras.utils.vis_utils import plot_model
 
 
@@ -48,7 +49,7 @@ def decoder_block(layer_in, skip_in, n_filters, dropout=True):
 
 
 # define the standalone generator model
-def define_generator(image_shape=(256, 256, 3)):
+def define_generator(image_shape=(IMG_WIDTH, IMG_HEIGHT, 1)):
     # weight initialization
     init = RandomNormal(stddev=0.02)
     # image input
@@ -73,18 +74,20 @@ def define_generator(image_shape=(256, 256, 3)):
     d6 = decoder_block(d5, e2, 128, dropout=False)
     d7 = decoder_block(d6, e1, 64, dropout=False)
     # output
-    g = Conv2DTranspose(3, (4, 4), strides=(2, 2), padding='same', kernel_initializer=init)(d7)
+    g = Conv2DTranspose(2, (4, 4), strides=(2, 2), padding='same', kernel_initializer=init)(d7)
     out_image = Activation('tanh')(g)
     # define model
     model = Model(in_image, out_image)
     return model
 
 
+'''
 # define image shape
-image_shape = (256, 256, 3)
+image_shape = (256, 256, 1)
 # create the model
 model = define_generator(image_shape)
 # summarize the model
 model.summary()
 # plot the model
 #plot_model(model, to_file='generator_model_plot.png', show_shapes=True, show_layer_names=True)
+'''

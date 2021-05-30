@@ -22,9 +22,9 @@ if __name__ == '__main__':
     train_data_gen, num_train_samples = create_train_generator()
     val_data_gen, num_val_samples = create_val_generator()
 
-    # Save weights after each epoch, save best
+    # Save weights after each epoch
     filepath = './Saved-weights/cnn-model' + '-{epoch:02d}.hdf5'
-    checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True)
+    checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=False)
 
     # Tensorboard callback
     log_dir = "./logs/cnn/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")

@@ -19,7 +19,7 @@ if __name__ == '__main__':
     model = cnn_model()
     model.compile(optimizer='rmsprop', loss='mse')
     # Loads the weights
-    model.load_weights('./Saved-weights/cnn-model-01.hdf5')
+    model.load_weights('./Saved-weights/cnn-model-03.hdf5')
 
     color_me = []
     original = []
