@@ -91,11 +91,3 @@ if __name__ == '__main__':
             # Plots, save model, validation
             summarize_performance(i, g_model, d_model, train=True, pretrained=True)
             summarize_performance(i, g_model, d_model, train=False, pretrained=True)
-
-        '''
-        # Every 3000 steps or last step
-        if (i + 1) % 3000 == 0 or (i + 1) / EPOCHS == steps_per_epo: # change
-            # Plots, save model, validation
-            summarize_performance(i, g_model, d_model, train=True, pretrained=True)
-            summarize_performance(i, g_model, d_model, train=False, pretrained=True)
-        '''

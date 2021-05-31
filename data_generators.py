@@ -6,14 +6,14 @@ from config import IMG_WIDTH, IMG_HEIGHT, BATCH_SIZE, TRAIN_DIR, VAL_DIR
 
 def create_train_generator():
 
-    # Training ImagaDataGenerator with Augmentation
+    # Training ImagaDataGenerator
     train_datagen = ImageDataGenerator(#shear_range=0.2,
                                        #zoom_range=0.2,
                                        #rotation_range=15,  # 15 degrees
                                        #horizontal_flip=True,
                                        data_format="channels_last",
                                        rescale=1.0 / 255.0,  # to be sRGB
-                                       validation_split=0.9,  # for part of the data ex. 0.7, change, takes 0.3 of the train data
+                                       validation_split=0.9,  # for part of the data
                                        dtype=tf.float32
                                        )
 
@@ -32,14 +32,14 @@ def create_train_generator():
 
 def create_val_generator():
 
-    # Validation ImageDataGenerator without Augmentation
+    # Validation ImageDataGenerator
     valid_datagen = ImageDataGenerator(data_format="channels_last",
                                        rescale=1.0 / 255.0,  # to be sRGB
                                        validation_split=0.7,
                                        dtype=tf.float32,
                                        )
 
-    # Create a flow from the directory for validation data, same seed
+    # Create a flow from the directory for validation data
     val_data_gen = valid_datagen.flow_from_directory(directory=VAL_DIR,
                                                      subset='training',
                                                      shuffle=True,
@@ -57,7 +57,7 @@ def create_test_generator():
     test_datagen = ImageDataGenerator(
         data_format="channels_last",
         rescale=1.0 / 255.0,  # to be sRGB
-        validation_split=0.9,  # for part of the data ex. 0.7, change, takes 0.3 of the train data
+        validation_split=0.9,  # for part of the data
         dtype=tf.float32
     )
 

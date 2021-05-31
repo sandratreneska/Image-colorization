@@ -65,7 +65,7 @@ def define_generator(image_shape=(IMG_WIDTH, IMG_HEIGHT, 1)):
     # bottleneck, no batch norm and relu
     b = Conv2D(512, (4, 4), strides=(2, 2), padding='same', kernel_initializer=init)(e7)
     b = Activation('relu')(b)
-    # decoder model: CD512-CD1024-CD1024-C1024-C1024-C512-C256-C128
+    # decoder model: CD512-CD512-CD512-CD512-C256-C128-C64
     d1 = decoder_block(b, e7, 512)
     d2 = decoder_block(d1, e6, 512)
     d3 = decoder_block(d2, e5, 512)
@@ -82,10 +82,8 @@ def define_generator(image_shape=(IMG_WIDTH, IMG_HEIGHT, 1)):
 
 
 '''
-# define image shape
-image_shape = (256, 256, 1)
 # create the model
-model = define_generator(image_shape)
+model = define_generator()
 # summarize the model
 model.summary()
 # plot the model

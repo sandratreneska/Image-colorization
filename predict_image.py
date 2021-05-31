@@ -38,4 +38,4 @@ img = lab2rgb(img)
 print(img.shape)
 
 # Save image
-plt.imsave(SAVE_PATH + IMG_PATH.split('/')[-1], img)  #  make with filename
+plt.imsave(SAVE_PATH + IMG_PATH.split('/')[-1], img)
